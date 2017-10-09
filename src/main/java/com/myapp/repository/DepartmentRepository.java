@@ -11,7 +11,7 @@ import com.myapp.beans.Department;
 @Repository
 public interface DepartmentRepository extends JpaRepository<Department, Integer> {
 	
-	@Cacheable(value="departments")
+	@Cacheable(value="appCache")
 	@Query("select d from Department d where d.id=:id")
 	Department findOneById(@Param("id") int id);
 }

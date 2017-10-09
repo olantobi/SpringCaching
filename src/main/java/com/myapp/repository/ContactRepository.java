@@ -10,7 +10,7 @@ import com.myapp.beans.Contact;
 @Repository
 public interface ContactRepository extends JpaRepository<Contact, Integer> {
 
-	@Cacheable(value = "contacts")
+	@Cacheable(value = "appCache")
 	@Query("select c from Contact c where c.id=:id")
 	Contact findOneById(@Param("id") int id);
 	

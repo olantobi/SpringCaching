@@ -20,7 +20,7 @@ public class DepartmentServiceImpl implements DepartmentService{
 		System.out.println(d.getName());
 	}
 
-	@CachePut(value="departments",key="#result.id")
+	@CachePut(value="appCache",key="#result.id")
 	@Override
 	public Department add(Department department) {
 		return departmentRepository.save(department); 

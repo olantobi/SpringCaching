@@ -14,7 +14,7 @@ public class ContactServiceImpl implements ContactService {
 	private ContactRepository contactRepository;
 
 	@Override
-	@CachePut(value="contacts",key="#result.id")
+	@CachePut(value="appCache",key="#result.id")
 	public Contact addData(Contact contact) {
 		return contactRepository.save(contact);
 	}
@@ -26,7 +26,7 @@ public class ContactServiceImpl implements ContactService {
 	}
 
 	@Override
-	@CachePut(value="contacts",key="#result.id")
+	@CachePut(value="appCache",key="#result.id")
 	public Contact update(int id) {
 		Contact contact=contactRepository.findOneById(id);
 		contact.setFirstName("Sunny");
@@ -35,7 +35,7 @@ public class ContactServiceImpl implements ContactService {
 	}
 
 	@Override
-	@CacheEvict(value="contacts")
+	@CacheEvict(value="appCache")
 	public void remove(int id) {
 		contactRepository.delete(id);
 	}
