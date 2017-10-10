@@ -1,6 +1,7 @@
 package com.myapp.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.stereotype.Service;
@@ -9,12 +10,13 @@ import com.myapp.repository.ContactRepository;
 import com.myapp.service.ContactService;
 
 @Service
+@CacheConfig(keyGenerator="cacheKeyGenerator")
 public class ContactServiceImpl implements ContactService {
 	@Autowired
 	private ContactRepository contactRepository;
 
 	@Override
-	@CachePut(value="appCache",key="#result.id")
+	@CachePut(value="appCache")
 	public Contact addData(Contact contact) {
 		return contactRepository.save(contact);
 	}
@@ -26,7 +28,7 @@ public class ContactServiceImpl implements ContactService {
 	}
 
 	@Override
-	@CachePut(value="appCache",key="#result.id")
+	@CachePut(value="appCache")
 	public Contact update(int id) {
 		Contact contact=contactRepository.findOneById(id);
 		contact.setFirstName("Sunny");
