@@ -1,9 +1,12 @@
 package com.myapp.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import com.myapp.beans.Contact;
 import com.myapp.repository.ContactRepository;
@@ -40,5 +43,11 @@ public class ContactServiceImpl implements ContactService {
 	@CacheEvict(value="appCache")
 	public void remove(int id) {
 		contactRepository.delete(id);
+	}
+
+	@Override
+	@Cacheable(value="appCache")
+	public List<Contact> showAllContacts() {
+		return contactRepository.findAll();
 	}
 }

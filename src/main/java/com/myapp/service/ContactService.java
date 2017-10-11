@@ -1,5 +1,6 @@
 package com.myapp.service;
 
+import java.util.List;
 import com.myapp.beans.Contact;
 
 public interface ContactService {
@@ -7,4 +8,5 @@ public interface ContactService {
 	void show(int id);
 	Contact update(int id);
 	void remove(int id);
+	List<Contact> showAllContacts();
 }

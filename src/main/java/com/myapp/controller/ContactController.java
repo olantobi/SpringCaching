@@ -1,5 +1,7 @@
 package com.myapp.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,6 +36,12 @@ public class ContactController {
 	public void showContact(@RequestParam("id") int id) {
 		contactService.show(id);
 	}
+	
+	@RequestMapping(value="/showAll",method=RequestMethod.GET)
+	public List<Contact> showAllContacts() {
+		return contactService.showAllContacts();
+	}
+	
 	
 	@RequestMapping(value="/adddept",method=RequestMethod.POST)
 	public void addDepartment(@RequestBody Department department) {

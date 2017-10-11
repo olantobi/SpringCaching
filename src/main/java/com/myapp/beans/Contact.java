@@ -28,7 +28,7 @@ public class Contact implements Serializable{
 		this.lastName = lastName;
 	}
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@JsonIgnore
 	private int id;
 	@Column(name="firstName")
