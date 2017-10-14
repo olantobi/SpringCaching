@@ -10,7 +10,6 @@ import com.myapp.repository.DepartmentRepository;
 import com.myapp.service.DepartmentService;
 
 @Service
-@CacheConfig(keyGenerator="cacheKeyGenerator")
 public class DepartmentServiceImpl implements DepartmentService{
 	
 	@Autowired

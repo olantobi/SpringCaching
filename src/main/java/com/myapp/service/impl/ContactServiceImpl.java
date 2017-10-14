@@ -13,25 +13,32 @@ import com.myapp.repository.ContactRepository;
 import com.myapp.service.ContactService;
 
 @Service
-@CacheConfig(keyGenerator="cacheKeyGenerator")
 public class ContactServiceImpl implements ContactService {
 	@Autowired
 	private ContactRepository contactRepository;
 
 	@Override
-	@CachePut(value="appCache")
+	@CachePut(value="appCache",key="#result.id")
 	public Contact addData(Contact contact) {
+		evictCache();
 		return contactRepository.save(contact);
 	}
 
 	@Override
-	public void show(int id) {
+	@CacheEvict(value="appCache",allEntries=true,beforeInvocation=true)
+	public void evictCache() {
+	}
+	
+	@Override
+	@Cacheable(value="appCache",key="#result.id")
+	public Contact show(int id) {
 		Contact contact = contactRepository.findOneById(id);
 			System.out.println(contact.getId() + " " + contact.getFirstName() + " " + contact.getLastName());
+			return contact;
 	}
 
 	@Override
-	@CachePut(value="appCache")
+	@CachePut(value="appCache",key="#result.id")
 	public Contact update(int id) {
 		Contact contact=contactRepository.findOneById(id);
 		contact.setFirstName("Sunny");
@@ -46,7 +53,7 @@ public class ContactServiceImpl implements ContactService {
 	}
 
 	@Override
-	@Cacheable(value="appCache")
+	@Cacheable(value="appCache",keyGenerator="cacheKeyGenerator")
 	public List<Contact> showAllContacts() {
 		return contactRepository.findAll();
 	}

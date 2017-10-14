@@ -1,3 +1,11 @@
-<ehcache>
-	<cache name="appCache" maxBytesLocalHeap="50m" timeToLiveSeconds="20000"></cache>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="ehcache.xsd" updateCheck="true"
+	monitoring="autodetect" dynamicConfig="true">
+	<diskStore path="java.io.tmpdir" />
+	<cache name="appCache" maxEntriesLocalHeap="10000"
+		maxEntriesLocalDisk="100000" eternal="false" diskSpoolBufferSizeMB="1024"
+		timeToIdleSeconds="3000" timeToLiveSeconds="3000"
+		memoryStoreEvictionPolicy="LFU" transactionalMode="off">
+		<persistence strategy="localTempSwap" />
+	</cache>
 </ehcache>
