@@ -21,7 +21,7 @@ public class DepartmentServiceImpl implements DepartmentService{
 		System.out.println(d.getName());
 	}
 
-	@CachePut(value="appCache")
+	//@CachePut(value="appCache")
 	@Override
 	public Department add(Department department) {
 		return departmentRepository.save(department); 

@@ -1,17 +1,19 @@
 package com.myapp.controller;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.myapp.beans.Contact;
 import com.myapp.beans.Department;
+import com.myapp.exception.SpringCacheException;
 import com.myapp.service.ContactService;
 import com.myapp.service.DepartmentService;
+
 
 @RestController
 @RequestMapping("/data")
@@ -33,7 +35,7 @@ public class ContactController {
 	}
 
 	@RequestMapping(value="/show",method=RequestMethod.GET)
-	public void showContact(@RequestParam("id") int id) {
+	public void showContact(@RequestParam("id") int id) throws SpringCacheException {
 		contactService.show(id);
 	}
 	
