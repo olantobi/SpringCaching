@@ -13,6 +13,7 @@ import com.myapp.beans.Department;
 import com.myapp.exception.SpringCacheException;
 import com.myapp.service.ContactService;
 import com.myapp.service.DepartmentService;
+import org.springframework.http.ResponseEntity;
 
 
 @RestController
@@ -35,8 +36,17 @@ public class ContactController {
 	}
 
 	@RequestMapping(value="/show",method=RequestMethod.GET)
-	public void showContact(@RequestParam("id") int id) throws SpringCacheException {
-		contactService.show(id);
+	public ResponseEntity<?> showContact(@RequestParam("id") int id) throws SpringCacheException {
+                System.out.println("About to show contact");
+                
+                try {
+                    Contact contact = contactService.show(id);
+                    System.out.println("Contact: "+contact);
+                    return ResponseEntity.ok(contact);
+                } catch (SpringCacheException e) {
+                    System.out.println("An exception was thrown: "+e.getMessage());
+                    throw e;
+                }
 	}
 	
 	@RequestMapping(value="/showAll",method=RequestMethod.GET)
