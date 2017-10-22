@@ -2,17 +2,12 @@ package com.myapp.service.impl;
 
 import com.myapp.beans.Contact;
 import com.myapp.exception.SpringCacheException;
-import com.myapp.exception.ResultStatusConstants;
-import com.myapp.exception.SpringCacheException;
 import com.myapp.repository.ContactRepository;
 import com.myapp.service.ContactService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.CachePut;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cache.ehcache.EhCacheCacheManager;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -41,6 +36,9 @@ public class ContactServiceImpl implements ContactService {
     public Contact show(int id) throws SpringCacheException  {
 		try {
 			Contact contact = contactRepository.findOneById(id);
+                        if (contact == null)
+                            throw new SpringCacheException(HttpStatus.BAD_REQUEST, "Error while getting contact with id "+id+" does not exist in db");
+                        
 			return contact;
 		}
 		catch (Exception e) {
