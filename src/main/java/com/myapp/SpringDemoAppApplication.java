@@ -21,6 +21,6 @@ public class SpringDemoAppApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringDemoAppApplication.class, args);
-		System.out.println("Lines Added in Git");
+		System.out.println("Lines Added in Dev branch of Git");
 	}
 }																																																					
