@@ -20,6 +20,7 @@ public class SpringDemoAppApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringDemoAppApplication.class, args);
-		System.out.println("Lines Added in Dev branch of Git");
+		System.out.println("Lines Added 6 in Dev branch of Git");
+		System.out.println("UnStagged File");
 	}
 }																																																					
