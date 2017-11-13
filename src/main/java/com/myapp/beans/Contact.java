@@ -26,6 +26,7 @@ public class Contact implements Serializable{
 	public Contact(String firstName, String lastName) {
 		this.firstName = firstName;
 		this.lastName = lastName;
+		//
 	}
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
