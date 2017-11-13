@@ -22,5 +22,6 @@ public class SpringDemoAppApplication {
 		SpringApplication.run(SpringDemoAppApplication.class, args);
 		System.out.println("Lines Added 6 in Dev branch of Git");
 		System.out.println("UnStagged File");
+		System.out.println("Added");
 	}
 }																																																					
