@@ -21,5 +21,7 @@ public class SpringDemoAppApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SpringDemoAppApplication.class, args);
 		System.out.println("Fast Forward");
+		System.out.println("Fast Forward2");
+		System.out.println("Fast Forward3");
 	}
 }																																																					
