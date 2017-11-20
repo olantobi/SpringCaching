@@ -24,5 +24,6 @@ public class SpringDemoAppApplication {
 		System.out.println("Fast Forward2");
 		System.out.println("Fast Forward3");
 		System.out.println("Master Added");
+		System.out.println("Iftekhar Added");
 	}
 }																																																					
