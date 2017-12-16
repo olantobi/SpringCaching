@@ -15,8 +15,10 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 @Table(name="Contact")
 @JsonSerialize
 public class Contact implements Serializable{
+	//Added in master branch..
 	private static final long serialVersionUID = 3093242533060827239L;
 
+	//no conflict added.
 	public Contact() {
 	}
 
