@@ -15,9 +15,6 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 @Table(name="Contact")
 @JsonSerialize
 public class Contact implements Serializable{
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 3093242533060827239L;
 
 	public Contact() {
@@ -26,7 +23,7 @@ public class Contact implements Serializable{
 	public Contact(String firstName, String lastName) {
 		this.firstName = firstName;
 		this.lastName = lastName;
-		//
+		//Dev Branch 
 	}
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
